@@ -32,7 +32,7 @@ export interface LoanInput {
   principal: number;
   interestRate: number;
   loanType: LoanType;
-  loanStartDate: string;
+  loanStartDate: dayjs.Dayjs;
   months: number; // Number of months (repayments)
 }
 

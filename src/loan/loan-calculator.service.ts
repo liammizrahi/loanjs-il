@@ -79,6 +79,7 @@ export class LoanCalculatorService {
   ): LoanSchedule[] {
     const schedule: LoanSchedule[] = [];
     const monthlyInterestRate = interestRate / 12 / 100;
+
     for (let i = 0; i < months; i++) {
       const monthlyPayment =
         (principal * monthlyInterestRate) /
