@@ -68,7 +68,32 @@ describe('LoanCalculator', () => {
     expect(loan.schedule[0]).toEqual(expectedFirstSchedule);
   });
 
-  it('should calculate balloon loan schedule #3', () => {
+  it('should calculate equal principal loan schedule #2', () => {
+    const loanInput: LoanInput = {
+      principal: 10000,
+      interestRate: 10.0,
+      loanType: LoanType.EqualPrincipal,
+      loanStartDate: dayjs(),
+      months: 10,
+    };
+
+    const loan = service.calculateLoan(loanInput);
+
+    expect(loan).toBeDefined();
+    expect(loan.schedule.length).toBe(10);
+
+    const expectedFirstSchedule: LoanSchedule = {
+      month: dayjs().format('MM/YYYY'),
+      paymentAmount: 1083.33,
+      interestAmount: 83.33,
+      principalAmount: 1000,
+      remainingPrincipal: 9000,
+    };
+
+    expect(loan.schedule[0]).toEqual(expectedFirstSchedule);
+  });
+
+  it('should calculate balloon loan schedule #4', () => {
     const loanInput: LoanInput = {
       principal: 20000,
       interestRate: 8.0,
